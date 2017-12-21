@@ -12,7 +12,7 @@ import {logout} from '../store'
  */
 const Main = (props) => {
   const {children, handleClick, isLoggedIn, news} = props
-
+  var checker;
   return (
     <div>
       <h1>News of the day!</h1>
@@ -32,7 +32,8 @@ const Main = (props) => {
         }
       </nav>
       <hr />
-      {console.log(`Hit the news ! ${(JSON.stringify(news))}`)}
+      { (
+        news[1] && console.log(`Hit the news ! ${JSON.parse(JSON.stringify((news)[0])).source}`))}
       {children}
     </div>
   )

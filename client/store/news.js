@@ -9,9 +9,7 @@ const GET_NEWS = 'GET_NEWS'
 /**
  * INITIAL STATE
  */
-const defaultNews = {
-    news: []
-}
+const defaultNews = []
 
 /**
  * ACTION CREATORS
@@ -26,8 +24,11 @@ export const news = () =>
 dispatch =>
   axios.get(`/api/news`)
     .then(res => {
-      dispatch(getNews(res.data.articles))
-      console.log(res.data.articles)
+      dispatch(getNews((res.data)))
+      console.log(res.data)
+      var check = JSON.stringify(res.data)
+      console.log("At Check", check)
+      console.log('Parsing CHECK ',JSON.parse(check)[0])
     })
     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
 
