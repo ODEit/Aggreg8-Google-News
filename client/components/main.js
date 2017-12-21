@@ -11,11 +11,11 @@ import {logout} from '../store'
  *  rendered out by the component's `children`.
  */
 const Main = (props) => {
-  const {children, handleClick, isLoggedIn} = props
+  const {children, handleClick, isLoggedIn, news} = props
 
   return (
     <div>
-      <h1>BOILERMAKER</h1>
+      <h1>News of the day!</h1>
       <nav>
         {
           isLoggedIn
@@ -32,6 +32,7 @@ const Main = (props) => {
         }
       </nav>
       <hr />
+      {console.log(`Hit the news ! ${(JSON.stringify(news))}`)}
       {children}
     </div>
   )
@@ -42,7 +43,8 @@ const Main = (props) => {
  */
 const mapState = (state) => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    news: state.news
   }
 }
 

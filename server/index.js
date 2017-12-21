@@ -11,6 +11,7 @@ const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
+const checker = require('dotenv').config();
 module.exports = app
 
 /**
@@ -102,6 +103,7 @@ if (require.main === module) {
     .then(syncDb)
     .then(createApp)
     .then(startListening)
+    .then(()=> console.log(process.env.GOOGLE_KEY))
 } else {
   createApp()
 }
