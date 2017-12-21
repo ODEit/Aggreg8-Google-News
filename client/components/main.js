@@ -33,7 +33,9 @@ const Main = (props) => {
       </nav>
       <hr />
       { (
-        news[1] && console.log(`Hit the news ! ${JSON.parse(JSON.stringify((news)[0])).source}`))}
+        Array.isArray(news) && news.map((article, key)=>{
+          return(<div key = {key}>{article.author}</div>)
+        }) )}
       {children}
     </div>
   )
