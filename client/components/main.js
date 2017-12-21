@@ -34,7 +34,11 @@ const Main = (props) => {
       <hr />
       { (
         Array.isArray(news) && news.map((article, key)=>{
-          return(<div key = {key}>{article.author}</div>)
+          return(<div>
+            <div key = {key}>{article.author}</div>
+            <img src= {article.urlToImage}/>
+            </div>
+          )
         }) )}
       {children}
     </div>
