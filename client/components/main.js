@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
-import {logout} from '../store'
+import { connect } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom'
+import { logout } from '../store'
 
 /**
  * COMPONENT
@@ -11,11 +11,11 @@ import {logout} from '../store'
  *  rendered out by the component's `children`.
  */
 const Main = (props) => {
-  const {children, handleClick, isLoggedIn, news} = props
+  const { children, handleClick, isLoggedIn, news } = props
   var checker;
   return (
     <div>
-      <h1>News of the day!</h1>
+      <h1 className = 'Main-center' >News of the day!</h1>
       <nav>
         {
           isLoggedIn
@@ -32,14 +32,23 @@ const Main = (props) => {
         }
       </nav>
       <hr />
-      { (
-        Array.isArray(news) && news.map((article, key)=>{
-          return(<div>
-            <div key = {key}>{article.author}</div>
-            <img src= {article.urlToImage}/>
+      <div className= 'main-articles'>
+      {(
+        Array.isArray(news) && news.map((article, key) => {
+          return (
+            <div key={key} className = "main-article"  >
+              <h2>{article.title}</h2>
+              <h3 >{`By : ${article.author}`}</h3>
+              <div className = 'article-meat'>
+              <a className = "main-a" href={article.url}>
+                <img className="Main-image" src={article.urlToImage} />
+              </a>
+              <p className = 'main-p'>{article.description}</p>
+              </div>
             </div>
           )
-        }) )}
+        }))}
+      </div>
       {children}
     </div>
   )
@@ -57,7 +66,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    handleClick () {
+    handleClick() {
       dispatch(logout())
     }
   }

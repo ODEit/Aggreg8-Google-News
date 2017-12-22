@@ -19,3 +19,49 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.Main-center {
+  text-align: center;
+}
+
+.Main-image{
+  margin:1rem 1rem 1rem 1rem;
+  width: 100%;
+  height: auto;
+}
+
+.main-article{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color:  rgb(255, 249, 161);
+  border: solid;
+  border-color: rgb(0, 0, 0);
+  border-radius: 15%; */
+  margin: 1rem;
+}
+
+.main-articles{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main-a{
+  width:25%;
+  height: 100%;
+  margin: 2rem;
+}
+.main-p{
+  width:25%;
+  height: 100%;
+  margin: 2rem;
+  align-self: center;
+}
+.article-meat{
+  display: flex;
+  justify-content: center;
+  /* background-color: rgb(232, 240, 164);
+  border-radius: 50%; */
+  margin: 0 10em;
+  margin-bottom: 1em;
+}
