@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { logout, sourced, getSource } from '../store'
+import Slider from 'react-slick'
 
 
 /**
@@ -11,9 +12,24 @@ import { logout, sourced, getSource } from '../store'
  *  else common to our entire app. The 'picture' inside the frame is the space
  *  rendered out by the component's `children`.
  */
-const Main = (props) => {
-  const { children, handleClick, isLoggedIn, news, handleSourcing, handleSourced, searched, handleQuery } = props
+class Main extends Component {
+  constructor() {
+    super();
+    this.state = {
+      searchInputs: []
+    }
+  }
+  
+render(){
+  const { children, handleClick, isLoggedIn, news, handleSourcing, handleSourced, searched, handleQuery } = this.props
   var checker;
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
   return (
     <div>
       <h1 className='Main-center' >News of the day!</h1>
@@ -30,22 +46,25 @@ const Main = (props) => {
           //     <Link to="/login">Login</Link>
           //     <Link to="/signup">Sign Up</Link>
           //   </div>
-
+  
         }
       </nav>
       <hr />
-      <form onSubmit={handleSourced} >
-        <input className='search-source' onChange={handleSourcing} name='source' type='text' placeholder='type news outlet ie: bbc-news, the-verge'></input>
-        <button type='submit'>things</button>
-      </form>
+      <select onChange = {handleSourced}>
+        {news && news.map((name,id) => {
+          return(
+            <option key = {id} value = {name}>{name}</option>
+          )
+        })}
+      </select>
       <form onSubmit={handleQuery} >
         <input className='search-source' onChange={handleSourcing} name='q' type='text' placeholder='anything'></input>
         <button type='submit'>things</button>
       </form>
-      <div className='main-articles'>
+      <Slider {...settings}>
         {Array.isArray(searched) && searched.map((article, key) => {
           return (
-            <div key={key} className="main-article">
+            <div key={key} >
               <h2>{article.title} </h2>
               <h3>{`By : ${article.author}`}</h3>
               <div className='article-meat'>
@@ -55,30 +74,17 @@ const Main = (props) => {
                 <p className='main-p'>{article.description}</p>
               </div>
             </div>
-
+  
           )
         })
-
+  
         }
-        {(
-          Array.isArray(news) && news.map((article, key) => {
-            return (
-              <div key={key} className="main-article"  >
-                <h2>{article.title}</h2>
-                <h3 >{`By : ${article.author}`}</h3>
-                <div className='article-meat'>
-                  <a className="main-a" href={article.url}>
-                    <img className="Main-image" src={article.urlToImage} />
-                  </a>
-                  <p className='main-p'>{article.description}</p>
-                </div>
-              </div>
-            )
-          }))}
-      </div>
-      {children}
+      </Slider>
+     
     </div>
   )
+}
+
 }
 
 /**
@@ -100,12 +106,12 @@ const mapDispatch = (dispatch) => {
     handleSourced(event) {
       console.log('inside sourced', event.target.source)
       event.preventDefault()
-      dispatch(sourced(event.target.source.value, 'sources'))
+      dispatch(sourced(event.target.value, 'sources'))
     },
     handleQuery(event) {
       console.log('inside sourced', )
       event.preventDefault()
-      dispatch(sourced(event.target.q.value, 'q' ))
+      dispatch(sourced(event.target.q.value, 'q'))
     },
     handleSourcing(event) {
       dispatch(getSource(event.target.value))
