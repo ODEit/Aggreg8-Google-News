@@ -33,22 +33,6 @@ render(){
   return (
     <div>
       <h1 className='Main-center' >News of the day!</h1>
-      <nav>
-        {
-          // isLoggedIn
-          //   ? <div>
-          //     {/* The navbar will show these links after you log in */}
-          //     <Link to="/home">Home</Link>
-          //     <a href="#" onClick={handleClick}>Logout</a>
-          //   </div>
-          //   : <div>
-          //     {/* The navbar will show these links before you log in */}
-          //     <Link to="/login">Login</Link>
-          //     <Link to="/signup">Sign Up</Link>
-          //   </div>
-  
-        }
-      </nav>
       <hr />
       <select onChange = {handleSourced}>
         {news && news.map((name,id) => {
@@ -65,8 +49,8 @@ render(){
         {Array.isArray(searched) && searched.map((article, key) => {
           return (
             <div key={key} >
-              <h2>{article.title} </h2>
-              <h3>{`By : ${article.author}`}</h3>
+              <h2 className = 'article-title' >{article.title} </h2>
+              <h3 className = 'article-author' >{`By : ${article.author}`}</h3>
               <div className='article-meat'>
                 <a className="main-a" href={article.url}>
                   <img className="Main-image" src={article.urlToImage} />
