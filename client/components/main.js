@@ -32,19 +32,21 @@ render(){
   };
   return (
     <div>
-      <h1 className='Main-center' >News of the day!</h1>
-      <hr />
-      <select onChange = {handleSourced}>
+      <div className='Main-center'>
+        <h1  >News of the day!</h1>
+        <select onChange = {handleSourced}>
         {news && news.map((name,id) => {
           return(
             <option key = {id} value = {name}>{name}</option>
           )
         })}
       </select>
-      <form onSubmit={handleQuery} >
+      <form className = 'search-form' onSubmit={handleQuery} >
         <input className='search-source' onChange={handleSourcing} name='q' type='text' placeholder='anything'></input>
         <button type='submit'>things</button>
       </form>
+      </div>
+      <hr/>
       <Slider {...settings}>
         {Array.isArray(searched) && searched.map((article, key) => {
           return (

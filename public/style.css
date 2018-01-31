@@ -4,9 +4,16 @@ body {
 }
 
 select {
-  width: 20rem;
-  height: 5rem;
+  width: 15rem;
+  height: 2.5rem;
   font-size: 1.2rem;
+  align-self: center;
+  background-color: white;
+  border-left: solid black;
+}
+
+hr{
+  margin-top: 0
 }
 
 a {
@@ -28,16 +35,33 @@ form div {
 }
 
 .search-source {
-  width: 92.5vw;
-  height: auto;
-/* transform: translateX() */
+  height: 2rem;
   border-radius: 10%;
-  box-shadow: .1em .1em .1em .1em black;
-  margin: .1em .1em .1em .1em  
+  font-size: 1.5rem;
+}
+
+.search-form{
+  align-self: center;
+}
+
+.search-form > button {
+  height: 1.5rem;
+  margin-left: 1rem;
+  border-radius: 20%;
+  background-color: rgb(182, 233, 253);
 }
 
 .Main-center {
+  display: flex;
+  text-shadow: silver;
   text-align: center;
+  font-size: 2rem;
+  margin: 0 0;
+  color:skyblue;
+  background-color: white;
+  padding: 1rem;
+  padding-top: .25rem;
+  justify-content: space-between;
 }
 
 .Main-image{
