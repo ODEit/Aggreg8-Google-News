@@ -40,6 +40,7 @@ form div {
   font-size: 1.5rem;
 }
 
+
 .search-form{
   align-self: center;
 }
@@ -49,6 +50,26 @@ form div {
   margin-left: 1rem;
   border-radius: 20%;
   background-color: rgb(182, 233, 253);
+  color: white;
+  font-size: 1rem;
+}
+
+.slider-flex {
+  position:fixed;
+  z-index: 1;
+  transform: translateY(25vh);
+  width: 97.5vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider-flex > button {
+  font-size: 1.5rem;
+  background-color: rgb(189, 237, 252);
+  border-radius: 50%;
+  margin: 0 1rem 0 1rem;
+  padding: 1rem;
+  color: rgb(162, 197, 88);
 }
 
 .Main-center {

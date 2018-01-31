@@ -15,9 +15,15 @@ import Slider from 'react-slick'
 class Main extends Component {
   constructor() {
     super();
-    this.state = {
-      searchInputs: []
-    }
+    this.next = this.next.bind(this)
+    this.previous = this.previous.bind(this)
+  }
+
+  next() {
+    this.slider.slickNext()
+  }
+  previous() {
+    this.slider.slickPrev()
   }
   
 render(){
@@ -30,6 +36,7 @@ render(){
     slidesToShow: 1,
     slidesToScroll: 1
   };
+
   return (
     <div>
       <div className='Main-center'>
@@ -47,7 +54,12 @@ render(){
       </form>
       </div>
       <hr/>
-      <Slider {...settings}>
+     { news? <div className = 'slider-flex'>
+      <button className='button' onClick={this.previous}>Prev</button>
+      <button className='button' onClick={this.next}>Next</button>
+      </div> : null}
+      <Slider ref={c => this.slider = c } {...settings}>
+      
         {Array.isArray(searched) && searched.map((article, key) => {
           return (
             <div key={key} >
@@ -62,9 +74,9 @@ render(){
             </div>
   
           )
-        })
-  
+        })   
         }
+       
       </Slider>
      
     </div>
