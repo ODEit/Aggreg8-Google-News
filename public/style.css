@@ -1,3 +1,7 @@
+html {
+  font-size: 12px;  
+}
+
 body {
   font-family: sans-serif;
   font-size: 18px;
@@ -55,13 +59,14 @@ form div {
 }
 
 .slider-flex {
-  position:fixed;
+  position: absolute;
   z-index: 1;
-  transform: translateY(25vh);
   width: 97.5vw;
+  top:50%;
   display: flex;
   justify-content: space-between;
 }
+
 
 .slider-flex > button {
   font-size: 1.5rem;

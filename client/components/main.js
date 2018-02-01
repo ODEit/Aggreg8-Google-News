@@ -54,10 +54,11 @@ render(){
       </form>
       </div>
       <hr/>
-     { news? <div className = 'slider-flex'>
+     
+      <div className = 'slider-flex'>
       <button className='button' onClick={this.previous}>Prev</button>
       <button className='button' onClick={this.next}>Next</button>
-      </div> : null}
+      </div> 
       <Slider ref={c => this.slider = c } {...settings}>
       
         {Array.isArray(searched) && searched.map((article, key) => {
@@ -78,7 +79,6 @@ render(){
         }
        
       </Slider>
-     
     </div>
   )
 }
