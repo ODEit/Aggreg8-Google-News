@@ -45,7 +45,7 @@ render(){
       <div className='Main-center'>
         <h1  >News of the day!</h1>
         <div className = 'main-filter-box' >
-        <input className = 'main-filter' name = "selector" type = 'text' onChange = {(e)=> e.target.value.length  && this.setState(this.state.searchCheck = news.filter(name => name.indexOf(e.target.value)=== 0) )}></input>
+        <input className = 'main-filter' name = "selector" type = 'text' onChange = {(e)=> e.target.value.length ? this.setState({searchCheck:  news.filter(name => name.indexOf(e.target.value)=== 0)}) : this.setState({searchCheck: []})}></input>
         {this.state.searchCheck && this.state.searchCheck.map((name,id) => {
           return(
             <div className = 'main-options' onClick = {handleSourced} key = {id} value = {name}>{name}</div>
@@ -53,12 +53,12 @@ render(){
         })}
         </div>
         <select onChange = {handleSourced}>
-        {this.state.searchCheck && this.state.searchCheck.map((name,id) => {
+        <option>default</option>
+        {news && news.map((name,id) => {
           return(
             <option key = {id} value = {name}>{name}</option>
           )
         })}
-            <option>Default</option>
       </select>
       <form className = 'search-form' onSubmit={handleQuery} >
         <input className='search-source' onChange={handleSourcing} name='q' type='text' placeholder='anything'></input>
