@@ -129,6 +129,37 @@ form div {
   margin: 2rem;
   align-self: center;
 }
+
+
+.main-filter{
+  font-size: 1.2rem;
+  height: 1.5rem;
+  padding: .3rem;
+  border-radius: 5%;
+}
+
+.main-filter-box{
+  align-self: center;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  max-height: 8vh;
+  position: relative;
+}
+
+.main-options{
+  border-left: solid black;
+  border-right: solid black;
+  font-size: 1rem;
+  transition: all .3s ease
+}
+
+.main-options:hover{
+  background-color: cornflowerblue;
+  color:white
+}
+
 .article-meat{
   display: flex;
   justify-content: center;

@@ -15,6 +15,9 @@ import Slider from 'react-slick'
 class Main extends Component {
   constructor() {
     super();
+    this.state = {
+      searchCheck : []
+    }
     this.next = this.next.bind(this)
     this.previous = this.previous.bind(this)
   }
@@ -27,7 +30,7 @@ class Main extends Component {
   }
   
 render(){
-  const { children, handleClick, isLoggedIn, news, handleSourcing, handleSourced, searched, handleQuery } = this.props
+  const { children, handleClick, isLoggedIn, news, handleSourcing, handleSourced, searched, handleQuery,  } = this.props
   var checker;
   var settings = {
     dots: true,
@@ -41,12 +44,21 @@ render(){
     <div>
       <div className='Main-center'>
         <h1  >News of the day!</h1>
+        <div className = 'main-filter-box' >
+        <input className = 'main-filter' name = "selector" type = 'text' onChange = {(e)=> e.target.value.length  && this.setState(this.state.searchCheck = news.filter(name => name.indexOf(e.target.value)=== 0) )}></input>
+        {this.state.searchCheck && this.state.searchCheck.map((name,id) => {
+          return(
+            <div className = 'main-options' onClick = {handleSourced} key = {id} value = {name}>{name}</div>
+          )
+        })}
+        </div>
         <select onChange = {handleSourced}>
-        {news && news.map((name,id) => {
+        {this.state.searchCheck && this.state.searchCheck.map((name,id) => {
           return(
             <option key = {id} value = {name}>{name}</option>
           )
         })}
+            <option>Default</option>
       </select>
       <form className = 'search-form' onSubmit={handleQuery} >
         <input className='search-source' onChange={handleSourcing} name='q' type='text' placeholder='anything'></input>
@@ -103,9 +115,10 @@ const mapDispatch = (dispatch) => {
       dispatch(logout())
     },
     handleSourced(event) {
-      console.log('inside sourced', event.target.source)
+      let value = event.target.value || event.target.innerHTML
+      console.log('inside sourced', value)
       event.preventDefault()
-      dispatch(sourced(event.target.value, 'sources'))
+      dispatch(sourced(value, 'sources'))
     },
     handleQuery(event) {
       console.log('inside sourced', )
