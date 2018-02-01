@@ -54,7 +54,7 @@ render(){
       </form>
       </div>
       <hr/>
-     
+     <div className = 'slider-fix'>
       <div className = 'slider-flex'>
       <button className='button' onClick={this.previous}>Prev</button>
       <button className='button' onClick={this.next}>Next</button>
@@ -79,6 +79,7 @@ render(){
         }
        
       </Slider>
+      </div>
     </div>
   )
 }
