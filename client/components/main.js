@@ -48,7 +48,7 @@ render(){
         <input id = 'main-filter' name = "selector" type = 'text' onChange = {(e)=> e.target.value.length ? this.setState({searchCheck:  news.filter(name => name.indexOf(e.target.value)=== 0)}) : this.setState({searchCheck: []})}></input>
         {this.state.searchCheck && this.state.searchCheck.map((name,id) => {
           return(
-            <span value ={name} onClick = {handleSourced.bind(this)} className = 'main-options' key = {id} >{name}</span>
+            <span onClick = {handleSourced.bind(this)} className = 'main-options' key = {id} >{name}</span>
           )
         })}
         </div>
