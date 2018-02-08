@@ -11,3 +11,7 @@ You have to get your own GoogleNews api key to make it work for you
 
 Can use to search the top headlines of today from google news.
 
+##Intended use for later-
+
+Make a designated site to share news with a friend, favorite interested articles, allow for talks between peers. 
+
