@@ -45,10 +45,10 @@ render(){
       <div className='Main-center'>
         <h1  >News of the day!</h1>
         <div className = 'main-filter-box' >
-        <input className = 'main-filter' name = "selector" type = 'text' onChange = {(e)=> e.target.value.length ? this.setState({searchCheck:  news.filter(name => name.indexOf(e.target.value)=== 0)}) : this.setState({searchCheck: []})}></input>
+        <input id = 'main-filter' name = "selector" type = 'text' onChange = {(e)=> e.target.value.length ? this.setState({searchCheck:  news.filter(name => name.indexOf(e.target.value)=== 0)}) : this.setState({searchCheck: []})}></input>
         {this.state.searchCheck && this.state.searchCheck.map((name,id) => {
           return(
-            <div className = 'main-options' onClick = {handleSourced} key = {id} value = {name}>{name}</div>
+            <span value ={name} onClick = {handleSourced.bind(this)} className = 'main-options' key = {id} >{name}</span>
           )
         })}
         </div>
@@ -80,7 +80,7 @@ render(){
               <h3 className = 'article-author' >{`By : ${article.author}`}</h3>
               <div className='article-meat'>
                 <a className="main-a" href={article.url}>
-                  <img className="Main-image" src={article.urlToImage} />
+                  {article.urlToImage ? <img className="Main-image" src={article.urlToImage} />:<img className = "Main-image" src = 'NoImage.svg.png'></img> }
                 </a>
                 <p className='main-p'>{article.description}</p>
               </div>
@@ -114,10 +114,15 @@ const mapDispatch = (dispatch) => {
     handleClick() {
       dispatch(logout())
     },
-    handleSourced(event) {
+    handleSourced (event)  {
       let value = event.target.value || event.target.innerHTML
+      console.log('the target ', event.target ) 
+      console.log('the value ', event.target.value ) 
+      console.log(event.currentTarget.value)
       console.log('inside sourced', value)
       event.preventDefault()
+      document.getElementById('main-filter').value = ''
+      this.setState( {searchCheck :[]} )
       dispatch(sourced(value, 'sources'))
     },
     handleQuery(event) {

@@ -5,7 +5,7 @@ import axios from 'axios'
  * ACTION TYPES
  */
 const GET_NEWS = 'GET_NEWS'
-const MEOW = 'MEOW'
+const QUERY_SOURCE = 'QUERY_SOURCE'
 const GET_SOURCE = 'GET_SOURCE'
 /**
  * INITIAL STATE
@@ -20,7 +20,7 @@ const defaultNews = {
  * ACTION CREATORS
  */
 export const getNews = news => ({ type: GET_NEWS, news })
-export const getNewsBySource = search => ({ type: MEOW, search })
+export const getNewsBySource = search => ({ type: QUERY_SOURCE, search })
 export const getSource = source => ({ type: GET_SOURCE, source })
 /**
  * THUNK CREATORS
@@ -69,7 +69,7 @@ export default function (state = defaultNews, action) {
         case GET_SOURCE:
             console.log(action.source)
             return Object.assign({}, state, { source: action.source })
-        case MEOW:
+        case QUERY_SOURCE:
             console.log(action.source)
             return Object.assign({}, state, { search: action.search })
         default:

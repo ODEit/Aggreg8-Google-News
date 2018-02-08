@@ -96,8 +96,8 @@ form div {
 
 .Main-image{
   margin: 0 auto;
-  width: 100%;
-  height: auto;
+  max-width: 450px;
+  max-height: 240px;
 }
 
 .main-article{
@@ -131,7 +131,7 @@ form div {
 }
 
 
-.main-filter{
+#main-filter{
   font-size: 1.2rem;
   height: 1.5rem;
   padding: .3rem;
