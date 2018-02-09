@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { logout, sourced, getSource } from '../store'
 import Slider from 'react-slick'
-
+import Article from './Article'
 
 /**
  * COMPONENT
@@ -75,21 +75,10 @@ render(){
       
         {Array.isArray(searched) && searched.map((article, key) => {
           return (
-            <div key={key} >
-              <h2 className = 'article-title' >{article.title} </h2>
-              <h3 className = 'article-author' >{`By : ${article.author}`}</h3>
-              <div className='article-meat'>
-                <a className="main-a" href={article.url}>
-                  {article.urlToImage ? <img className="Main-image" src={article.urlToImage} />:<img className = "Main-image" src = 'NoImage.svg.png'></img> }
-                </a>
-                <p className='main-p'>{article.description}</p>
-              </div>
-            </div>
-  
+          <div key = {key}><Article article = {article}/></div>
           )
         })   
         }
-       
       </Slider>
       </div>
     </div>

@@ -12,7 +12,10 @@ const User = require('./user')
  * we can just require it from 'db/models'
  * for example, we can say: const {User} = require('../db/models')
  * instead of: const User = require('../db/models/user')
+ *
  */
+
+User.belongsToMany(User,{as: 'Friends', through: 'friends', constraints:false});
 module.exports = {
   User
 }
