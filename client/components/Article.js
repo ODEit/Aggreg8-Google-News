@@ -6,7 +6,7 @@ const Article = (props) => {
     return ( 
         <div>
           <h2 className = 'article-title' >{article.title} </h2>
-          <h3 className = 'article-author' >{`By : ${article.author}`}</h3>
+          {article.author && <h3 className = 'article-author' >{`By : ${article.author}`}</h3>}
           <div className='article-meat'>
             <a className="main-a" href={article.url}>
               {article.urlToImage ? <img className="Main-image" src={article.urlToImage} />:<img className = "Main-image" src = 'NoImage.svg.png'></img> }

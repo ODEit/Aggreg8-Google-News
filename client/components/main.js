@@ -4,14 +4,10 @@ import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { logout, sourced, getSource } from '../store'
 import Slider from 'react-slick'
-import Article from './Article'
 
-/**
- * COMPONENT
- *  The Main component is our 'picture frame' - it displays the navbar and anything
- *  else common to our entire app. The 'picture' inside the frame is the space
- *  rendered out by the component's `children`.
- */
+import Article from './Article'
+import Footer from  './footer'
+
 class Main extends Component {
   constructor() {
     super();
@@ -41,7 +37,7 @@ render(){
   };
 
   return (
-    <div>
+    <div id = "Main-frame" >
       <div className='Main-center'>
         <h1  >News of the day!</h1>
         <div className = 'main-filter-box' >
@@ -52,11 +48,11 @@ render(){
           )
         })}
         </div>
-        <select onChange = {handleSourced}>
-        <option>default</option>
+        <select onChange = {handleSourced.bind(this)}>
+        <option >default</option>
         {news && news.map((name,id) => {
           return(
-            <option key = {id} value = {name}>{name}</option>
+            <option  key = {id} value = {name}>{name}</option>
           )
         })}
       </select>
@@ -105,17 +101,13 @@ const mapDispatch = (dispatch) => {
     },
     handleSourced (event)  {
       let value = event.target.value || event.target.innerHTML
-      console.log('the target ', event.target ) 
-      console.log('the value ', event.target.value ) 
-      console.log(event.currentTarget.value)
-      console.log('inside sourced', value)
+
       event.preventDefault()
       document.getElementById('main-filter').value = ''
       this.setState( {searchCheck :[]} )
       dispatch(sourced(value, 'sources'))
     },
     handleQuery(event) {
-      console.log('inside sourced', )
       event.preventDefault()
       dispatch(sourced(event.target.q.value, 'q'))
     },

@@ -104,7 +104,7 @@ if (require.main === module) {
     .then(syncDb)
     .then(createApp)
     .then(startListening)
-    .then(()=> console.log(process.env.GOOGLE_KEY))
+    // .then(()=> console.log(process.env.GOOGLE_KEY))
 } else {
   createApp()
 }

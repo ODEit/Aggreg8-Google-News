@@ -82,6 +82,10 @@ form div {
   color: rgb(162, 197, 88);
 }
 
+.button:focus {
+  outline: none
+}
+
 .Main-center {
   display: flex;
   text-shadow: silver;
@@ -179,4 +183,17 @@ form div {
 
 .article-author {
   text-align: center
+}
+
+#footer {
+ position: absolute;
+ width: 100vw;
+ bottom: 1rem;
+ border-top: darkblue solid 1px;
+}
+
+#Main-frame {
+  position: relative;
+  height: 100vh;
+  width: auto;
 }
