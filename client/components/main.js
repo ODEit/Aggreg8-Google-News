@@ -58,7 +58,7 @@ render(){
       </select>
       <form className = 'search-form' onSubmit={handleQuery} >
         <input className='search-source' onChange={handleSourcing} name='q' type='text' placeholder='anything'></input>
-        <button type='submit'>things</button>
+        <button type='submit'>anything</button>
       </form>
       </div>
       <hr/>
