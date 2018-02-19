@@ -18,3 +18,11 @@ const Article = (props) => {
 } 
 
 export default Article;
+
+/**
+ * article.title
+ * article.author
+ * article.url
+ * article.urlToImage
+ * article.description
+ */

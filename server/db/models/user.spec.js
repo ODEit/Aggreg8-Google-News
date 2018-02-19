@@ -10,7 +10,7 @@ describe('User model', () => {
   })
 
   describe('instanceMethods', () => {
-    describe('correctPassword', () => {
+    describe('correctPassword, addFriends, getFriends', () => {
       let Users = [
         {
           email: "John@Doe.com",
@@ -25,20 +25,20 @@ describe('User model', () => {
       beforeEach(() => {
         return Promise.all(
           Users.map(user => User.create(user)))
-          .then(async function (user){
+          .then(async function (user) {
             user[0].email = 'john@Doe.com' ? [john, jane] = [user[0], user[1]] : [john, jane] = [user[1], user[0]]
             friend = await john.addFriends(jane)
             friend = await john.getFriends()
-            return  friend
+            
+            return friend
           })
       })
 
       it('returns true if the password is correct', () => {
-        console.log('Hello!!!', JSON.stringify(jane))
         expect(jane.correctPassword('jane')).to.be.equal(true)
       })
 
-      it('returns an array of john"s friends', () => {
+      it('returns an array', () => {
         expect(Array.isArray(friend)).to.be.equal(true)
       })
 

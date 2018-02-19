@@ -1,5 +1,5 @@
-const User = require('./user')
-
+const User = require('./user');
+const Favorites = require('./favorites');
 /**
  * If we had any associations to make, this would be a great place to put them!
  * ex. if we had another model called BlogPost, we might say:
@@ -16,6 +16,11 @@ const User = require('./user')
  */
 
 User.belongsToMany(User,{as: 'Friends', through: 'friends', constraints:false});
+
+User.hasMany(Favorites);
+
+Favorites.belongsTo(User)
+
 module.exports = {
   User
 }
